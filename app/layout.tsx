@@ -108,27 +108,70 @@ export default function RootLayout({
 
         <footer className="site-footer">
           <div className="shell footer-shell">
-            <div>
-              <p className="footer-title">{APP_NAME}</p>
-              <p className="footer-copy">
-                A Play Store-inspired web presence for the VPN experience published by{" "}
-                {DEVELOPER_NAME}.
+            <div className="footer-brand">
+              <div className="footer-brand-row">
+                <Image
+                  src="/brand/icon.png"
+                  alt=""
+                  width={56}
+                  height={56}
+                  className="footer-brand-icon"
+                />
+                <div>
+                  <p className="footer-title">{APP_NAME}</p>
+                  <p className="footer-copy">
+                    {APP_TAGLINE}
+                  </p>
+                </div>
+              </div>
+              <p className="footer-description">
+                {APP_NAME} is a VPN experience presented on the web using My Tunnel
+                Proxy&apos;s Play Store branding, screenshots, and privacy signals.
               </p>
             </div>
 
-            <div className="footer-meta">
-              <p>
-                Google Play listing updated on <strong>{PLAY_STORE_UPDATED_AT}</strong>.
-              </p>
-              <p>
-                Contact:{" "}
+            <div className="footer-columns">
+              <div className="footer-column">
+                <p className="footer-column-title">Services</p>
+                <a
+                  href={PLAY_STORE_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="footer-link"
+                >
+                  Android App
+                </a>
+                <a
+                  href={PLAY_STORE_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="footer-link"
+                >
+                  Google Play Listing
+                </a>
+              </div>
+
+              <div className="footer-column">
+                <p className="footer-column-title">About Us</p>
+                <Link href="/" className="footer-link">
+                  Homepage
+                </Link>
+                <Link href="/privacy-policy" className="footer-link">
+                  Privacy Policy
+                </Link>
+                <p className="footer-note">Published by {DEVELOPER_NAME}</p>
+              </div>
+
+              <div className="footer-column">
+                <p className="footer-column-title">Contact Info</p>
                 <a href={`mailto:${SUPPORT_EMAIL}`} className="footer-link">
                   {SUPPORT_EMAIL}
                 </a>
-              </p>
-              <p>
-                Developer location: <strong>{DEVELOPER_COUNTRY}</strong>
-              </p>
+                <p className="footer-note">Developer location: {DEVELOPER_COUNTRY}</p>
+                <p className="footer-note">
+                  Listing updated: {PLAY_STORE_UPDATED_AT}
+                </p>
+              </div>
             </div>
           </div>
         </footer>
