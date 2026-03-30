@@ -9,6 +9,7 @@ import {
   APP_TAGLINE,
   DEVELOPER_COUNTRY,
   DEVELOPER_NAME,
+  PLAY_STORE_DOWNLOADS,
   PLAY_STORE_UPDATED_AT,
   PLAY_STORE_URL,
   SUPPORT_EMAIL
@@ -89,18 +90,14 @@ export default function RootLayout({
               </span>
             </Link>
 
-            <nav className="nav-links" aria-label="Primary">
-              <Link href="/">Overview</Link>
-              <Link href="/privacy-policy">Privacy Policy</Link>
-              <a
-                href={PLAY_STORE_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="nav-cta"
-              >
-                Google Play
-              </a>
-            </nav>
+            <div className="header-menu" aria-label="Site highlights">
+              <p className="header-menu-title">{APP_TAGLINE}</p>
+              <div className="header-chip-row">
+                <span className="header-chip">{PLAY_STORE_DOWNLOADS} installs</span>
+                <span className="header-chip">No data collected</span>
+                <span className="header-chip">Encrypted in transit</span>
+              </div>
+            </div>
           </div>
         </header>
 

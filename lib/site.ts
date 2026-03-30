@@ -3,6 +3,7 @@ export const PLAY_STORE_URL =
 
 export const APP_NAME = "My Tunnel Proxy";
 export const APP_TAGLINE = "Fast and Secure VPN";
+export const PLAY_STORE_DOWNLOADS = "100K+";
 export const SUPPORT_EMAIL = "chalmanchaudhury@gmail.com";
 export const DEVELOPER_NAME = "Mazasif Pvt Ltd.";
 export const DEVELOPER_COUNTRY = "India";
