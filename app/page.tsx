@@ -99,10 +99,12 @@ const metrics = [
     label: "Latest Play Store update"
   },
   {
-    value: "5",
-    label: "Real screenshots used on the site"
+    value: "3",
+    label: "Curated screenshots on the homepage"
   }
 ] as const;
+
+const galleryShots = [screenshots[0], screenshots[2], screenshots[3]] as const;
 
 const trustCards = [
   {
@@ -137,16 +139,6 @@ export default function HomePage() {
                 width={260}
                 height={592}
                 priority
-                className="device-image"
-              />
-            </div>
-
-            <div className="device-panel device-panel-side">
-              <Image
-                src="/screenshots/shot-2.png"
-                alt={screenshots[1].alt}
-                width={260}
-                height={592}
                 className="device-image"
               />
             </div>
@@ -249,14 +241,9 @@ export default function HomePage() {
               />
             </div>
 
-            <div className="reference-shot-card reference-shot-card-float">
-              <Image
-                src="/screenshots/shot-5.png"
-                alt={screenshots[4].alt}
-                width={260}
-                height={592}
-                className="device-image"
-              />
+            <div className="reference-note-card">
+              <span>Package-first layout</span>
+              <strong>Server lists and timer states stay easy to scan</strong>
             </div>
           </div>
 
@@ -344,78 +331,32 @@ export default function HomePage() {
         <div className="shell">
           <div className="section-heading centered-heading">
             <span className="eyebrow">App Screenshots</span>
-            <h2>Take a look before you download.</h2>
+            <h2>A smaller, cleaner preview before you download.</h2>
             <p>
-              The gallery follows the same broad idea as the reference site, but every
-              screen here comes directly from the My Tunnel Proxy Play Store listing.
+              Instead of showing too many large mockups, the homepage now highlights a
+              focused set of app screens with cleaner framing and better spacing.
             </p>
           </div>
 
-          <div className="reference-gallery">
-            <article className="gallery-card gallery-card-large">
-              <Image
-                src="/screenshots/shot-1.png"
-                alt={screenshots[0].alt}
-                width={260}
-                height={592}
-                className="device-image"
-              />
-            </article>
+          <div className="shot-gallery-grid">
+            {galleryShots.map((shot, index) => (
+              <article key={shot.src} className="shot-gallery-card">
+                <div className="shot-gallery-head">
+                  <span>Screen {index + 1}</span>
+                  <h3>{shot.title}</h3>
+                </div>
 
-            <article className="gallery-card">
-              <Image
-                src="/screenshots/shot-2.png"
-                alt={screenshots[1].alt}
-                width={260}
-                height={592}
-                className="device-image"
-              />
-            </article>
-
-            <article className="gallery-card">
-              <Image
-                src="/screenshots/shot-3.png"
-                alt={screenshots[2].alt}
-                width={260}
-                height={592}
-                className="device-image"
-              />
-            </article>
-
-            <article className="gallery-card">
-              <Image
-                src="/screenshots/shot-4.png"
-                alt={screenshots[3].alt}
-                width={260}
-                height={592}
-                className="device-image"
-              />
-            </article>
-
-            <article className="gallery-card">
-              <Image
-                src="/screenshots/shot-5.png"
-                alt={screenshots[4].alt}
-                width={260}
-                height={592}
-                className="device-image"
-              />
-            </article>
-
-            <article className="gallery-card gallery-card-info">
-              <Image
-                src="/brand/icon.png"
-                alt={`${APP_NAME} logo`}
-                width={480}
-                height={480}
-                className="gallery-brand-image"
-              />
-              <h3>Responsive store-inspired landing page</h3>
-              <p>
-                Same app assets, stronger structure, and a layout that holds together on
-                desktop and mobile.
-              </p>
-            </article>
+                <div className="shot-gallery-frame">
+                  <Image
+                    src={shot.src}
+                    alt={shot.alt}
+                    width={260}
+                    height={592}
+                    className="shot-gallery-image"
+                  />
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>

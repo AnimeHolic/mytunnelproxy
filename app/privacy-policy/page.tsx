@@ -118,16 +118,6 @@ export default function PrivacyPolicyPage() {
               />
             </div>
 
-            <div className="device-panel device-panel-side">
-              <Image
-                src="/screenshots/shot-2.png"
-                alt={screenshots[1].alt}
-                width={260}
-                height={592}
-                className="device-image"
-              />
-            </div>
-
             <div className="brand-orb policy-brand-orb">
               <Image
                 src="/brand/icon.png"
