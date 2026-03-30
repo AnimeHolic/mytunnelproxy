@@ -3,112 +3,188 @@ import Link from "next/link";
 
 import {
   APP_NAME,
-  APP_TAGLINE,
   PLAY_STORE_UPDATED_AT,
   PLAY_STORE_URL,
   screenshots
 } from "@/lib/site";
 
-const featureCards = [
+const protocolChips = [
+  "OpenVPN",
+  "SSH",
+  "UDP",
+  "Auto Select Server",
+  "Built-in Packages"
+] as const;
+
+const whyCards = [
   {
-    eyebrow: "01",
-    title: "Unparalleled security",
+    title: "Multiple protocol paths",
     body:
-      "The Play Store listing positions My Tunnel Proxy as a privacy-first VPN built to shield internet traffic while you browse, stream, and work online."
+      "My Tunnel Proxy presents OpenVPN, SSH, and UDP-oriented flows in a way that feels quick to understand from the first screen."
   },
   {
-    eyebrow: "02",
-    title: "Flexible protocol support",
+    title: "Privacy-first positioning",
     body:
-      "OpenVPN, SSH, and UDP support give the app a practical range of connection options for speed, resilience, and device compatibility."
+      "The current Google Play disclosure highlights no data collection, no third-party data sharing, and encryption in transit."
   },
   {
-    eyebrow: "03",
-    title: "No data collection claims",
+    title: "One-tap connect rhythm",
     body:
-      "The current Google Play data-safety disclosure states that no user data is collected and no data is shared with third parties."
+      "The centered connection state, large primary action, and stacked cards make the next step obvious on mobile."
   },
   {
-    eyebrow: "04",
-    title: "Global access",
+    title: "Server and package lists",
     body:
-      "The product messaging focuses on worldwide reach, quick server selection, and access to content across multiple regions."
+      "The interface is built around real package choices, auto-select entries, and country-specific server options."
   },
   {
-    eyebrow: "05",
-    title: "Fast, simple controls",
+    title: "Store-matched visual language",
     body:
-      "Across the screenshots, the UI keeps the primary task obvious: pick a server or package and connect with one tap."
+      "Blue app bars, rounded white cards, map graphics, and the violet-pink shield all mirror the app listing."
   },
   {
-    eyebrow: "06",
-    title: "Listing-matched design language",
+    title: "Responsive web translation",
     body:
-      "This site mirrors the same icon, screenshots, blue mobile chrome, world-map motif, and pink-violet shield accents shown on Google Play."
+      "This version keeps the same landing-page cadence as the reference site while scaling cleanly across desktop, tablet, and phone."
   }
 ] as const;
 
-const trustPoints = [
+const benefitBlocks = [
+  {
+    title: "Access packages fast",
+    body:
+      "Auto-select and country-targeted packages keep connection choices visible without burying them behind complex flows."
+  },
+  {
+    title: "Protect browsing on the go",
+    body:
+      "The product messaging stays focused on secure, private browsing with simple status indicators and a quick start path."
+  },
+  {
+    title: "Keep the setup familiar",
+    body:
+      "The site reuses the app's real screenshots so new visitors see the exact UI patterns they will get after downloading."
+  }
+] as const;
+
+const quickStartSteps = [
+  {
+    title: "Choose a server",
+    body:
+      "Start with auto-select or switch to a listed country and package from the built-in selection view."
+  },
+  {
+    title: "Check the status",
+    body:
+      "The app surfaces connection state, timer, and transfer details in a simple centered layout."
+  },
+  {
+    title: "Tap once to connect",
+    body:
+      "A large action button anchors the screen so the connection flow stays easy on small devices."
+  }
+] as const;
+
+const metrics = [
   {
     value: "100K+",
     label: "Google Play downloads"
   },
   {
-    value: "3+",
-    label: "Play Store content rating"
+    value: "3",
+    label: "Core protocol paths highlighted"
   },
   {
     value: PLAY_STORE_UPDATED_AT,
-    label: "Last Play Store update"
+    label: "Latest Play Store update"
   },
   {
-    value: "OpenVPN / SSH / UDP",
-    label: "Supported protocols"
+    value: "5",
+    label: "Real screenshots used on the site"
   }
 ] as const;
 
-const privacySignals = [
-  "No data shared with third parties",
-  "No data collected",
-  "Data encrypted in transit"
-] as const;
-
-const faqs = [
+const trustCards = [
   {
-    question: "What makes this site feel connected to the app?",
-    answer:
-      "It uses the same Play Store icon, screenshots, world-map presentation, bright blue action framing, and magenta-violet brand accents visible in the listing."
+    title: "Store-recognizable hero",
+    body:
+      "The top of the page now leans into device mockups, bright CTA buttons, and product-first messaging similar to the HTTP Injector landing flow."
   },
   {
-    question: "Where can I download the Android app?",
-    answer:
-      "Use the Google Play button to open the official Play Store listing for My Tunnel Proxy."
+    title: "More conversion-friendly structure",
+    body:
+      "The homepage now moves through features, benefits, screenshots, metrics, and a final download push in a much more familiar SaaS rhythm."
   },
   {
-    question: "What privacy signals are reflected here?",
-    answer:
-      "The homepage and policy both reflect the current Play Store disclosure: no data shared, no data collected, and encryption in transit."
-  },
-  {
-    question: "Is the site ready for Vercel?",
-    answer:
-      "Yes. This project is a standard Next.js App Router site and builds cleanly for Vercel deployment."
+    title: "Responsive by default",
+    body:
+      "Every major section collapses cleanly on tablets and phones so the layout stays usable instead of just shrinking."
   }
 ] as const;
 
 export default function HomePage() {
   return (
     <div className="page-root">
-      <section className="hero-section">
-        <div className="shell hero-shell">
-          <div className="hero-copy">
-            <span className="eyebrow">{APP_TAGLINE}</span>
-            <h1>Secure browsing with the same bold identity shown on Google Play.</h1>
-            <p className="hero-text">
-              My Tunnel Proxy combines a bright blue mobile interface, a pink-violet
-              shield crest, and server-first workflows into a VPN experience built for
-              quick connections. This homepage carries that exact visual language onto
-              the web while keeping the focus on speed, privacy, and simplicity.
+      <section className="reference-hero">
+        <div className="shell reference-hero-shell">
+          <div className="hero-visual-pane">
+            <span className="floating-tag">Fast and secure VPN</span>
+
+            <div className="device-panel device-panel-main">
+              <Image
+                src="/screenshots/shot-1.png"
+                alt={screenshots[0].alt}
+                width={260}
+                height={592}
+                priority
+                className="device-image"
+              />
+            </div>
+
+            <div className="device-panel device-panel-side">
+              <Image
+                src="/screenshots/shot-2.png"
+                alt={screenshots[1].alt}
+                width={260}
+                height={592}
+                className="device-image"
+              />
+            </div>
+
+            <div className="brand-orb">
+              <Image
+                src="/brand/icon.png"
+                alt={`${APP_NAME} logo`}
+                width={480}
+                height={480}
+                className="brand-orb-image"
+              />
+            </div>
+
+            <div className="detail-card detail-card-left">
+              <span>Auto Select Server</span>
+              <strong>Quick-start package flow</strong>
+            </div>
+
+            <div className="detail-card detail-card-right">
+              <span>Current disclosure</span>
+              <strong>No data collected</strong>
+            </div>
+          </div>
+
+          <div className="hero-copy-pane">
+            <span className="eyebrow">{APP_NAME}</span>
+            <h1>{APP_NAME} VPN app for private, secure browsing on every screen.</h1>
+            <p className="hero-copy-text">
+              The homepage is now rebuilt around the same high-conversion structure used
+              by the HTTP Injector website: a large device-led hero, a protocol strip,
+              feature cards, alternating content blocks, screenshots, metrics, and a
+              strong closing download section.
+            </p>
+            <p className="hero-copy-text">
+              Instead of copying the other brand directly, this version keeps My Tunnel
+              Proxy&apos;s own Play Store identity in focus with its real logo, actual
+              screenshots, blue app chrome, and pink-violet shield accents.
             </p>
 
             <div className="hero-actions">
@@ -124,181 +200,249 @@ export default function HomePage() {
                 Read Privacy Policy
               </Link>
             </div>
+          </div>
+        </div>
 
-            <div className="pill-row" aria-label="Privacy and product highlights">
-              {privacySignals.map((item) => (
-                <span key={item} className="info-pill">
-                  {item}
-                </span>
+        <div className="shell protocol-band">
+          {protocolChips.map((chip) => (
+            <div key={chip} className="protocol-chip">
+              {chip}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="section reference-section">
+        <div className="shell">
+          <div className="section-heading centered-heading">
+            <span className="eyebrow">Why My Tunnel Proxy?</span>
+            <h2>Protect your browsing with a layout that feels direct, familiar, and mobile-first.</h2>
+            <p>
+              This section is intentionally closer to the HTTP Injector feature grid:
+              compact benefit cards, fast-scanning titles, and a crisp pitch around
+              protocol support, privacy, and one-tap usability.
+            </p>
+          </div>
+
+          <div className="reference-feature-grid">
+            {whyCards.map((card, index) => (
+              <article key={card.title} className="reference-feature-card">
+                <span className="reference-index">{String(index + 1).padStart(2, "0")}</span>
+                <h3>{card.title}</h3>
+                <p>{card.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="shell reference-split">
+          <div className="reference-visual-stack">
+            <div className="reference-shot-card reference-shot-card-main">
+              <Image
+                src="/screenshots/shot-4.png"
+                alt={screenshots[3].alt}
+                width={260}
+                height={592}
+                className="device-image"
+              />
+            </div>
+
+            <div className="reference-shot-card reference-shot-card-float">
+              <Image
+                src="/screenshots/shot-5.png"
+                alt={screenshots[4].alt}
+                width={260}
+                height={592}
+                className="device-image"
+              />
+            </div>
+          </div>
+
+          <div className="reference-copy-stack">
+            <span className="eyebrow">Get the benefits</span>
+            <h2>Faster scanning, clearer package choices, and a simpler web story.</h2>
+            <p>
+              The reference site is effective because it walks visitors through exactly
+              what the product does without overloading them. This version applies that
+              same structure to My Tunnel Proxy and leans into the actual app screens.
+            </p>
+
+            <div className="benefit-list">
+              {benefitBlocks.map((item) => (
+                <article key={item.title} className="benefit-card">
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </article>
               ))}
             </div>
 
-            <div className="stats-grid">
-              {trustPoints.map((stat) => (
-                <article key={stat.label} className="stat-card">
-                  <p className="stat-value">{stat.value}</p>
-                  <p className="stat-label">{stat.label}</p>
+            <div className="hero-actions">
+              <a
+                href={PLAY_STORE_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="button button-primary"
+              >
+                Get Started
+              </a>
+              <Link href="/privacy-policy" className="button button-secondary">
+                Privacy Details
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section reference-band">
+        <div className="shell quickstart-shell">
+          <div className="quickstart-copy">
+            <span className="eyebrow">Quick start</span>
+            <h2>Built to feel easy before the download even happens.</h2>
+            <p>
+              The second content band mirrors the reference site&apos;s confidence-building
+              rhythm: show the workflow, surface a strong claim, and keep the next action
+              visible.
+            </p>
+
+            <div className="quickstart-list">
+              {quickStartSteps.map((step) => (
+                <article key={step.title} className="quickstart-step">
+                  <h3>{step.title}</h3>
+                  <p>{step.body}</p>
                 </article>
               ))}
             </div>
           </div>
 
-          <div className="hero-visual">
-            <div className="signal-card signal-card-top">
-              <span>Connected</span>
-              <strong>World map + shield identity</strong>
-            </div>
-
-            <div className="hero-phone-frame">
-              <div className="phone-topbar" />
-              <Image
-                src="/screenshots/shot-1.png"
-                alt={screenshots[0].alt}
-                width={260}
-                height={592}
-                priority
-                className="hero-phone-image"
-              />
-            </div>
-
-            <div className="signal-card signal-card-bottom">
-              <span>Protocol-ready</span>
-              <strong>OpenVPN, SSH, and UDP</strong>
-            </div>
-
-            <div className="mini-shot mini-shot-left">
-              <Image
-                src="/screenshots/shot-2.png"
-                alt={screenshots[1].alt}
-                width={260}
-                height={592}
-                className="mini-shot-image"
-              />
-            </div>
-
-            <div className="mini-shot mini-shot-right">
+          <div className="quickstart-visual">
+            <div className="quickstart-device">
               <Image
                 src="/screenshots/shot-3.png"
                 alt={screenshots[2].alt}
                 width={260}
                 height={592}
-                className="mini-shot-image"
+                className="device-image"
               />
+            </div>
+
+            <div className="quickstart-note quickstart-note-top">
+              <span>Status first</span>
+              <strong>Connected, timer, and transfer info stay visible</strong>
+            </div>
+
+            <div className="quickstart-note quickstart-note-bottom">
+              <span>Built-in packages</span>
+              <strong>Server and package lists remain central to the flow</strong>
             </div>
           </div>
         </div>
       </section>
 
+      <section className="section" id="screenshots">
+        <div className="shell">
+          <div className="section-heading centered-heading">
+            <span className="eyebrow">App Screenshots</span>
+            <h2>Take a look before you download.</h2>
+            <p>
+              The gallery follows the same broad idea as the reference site, but every
+              screen here comes directly from the My Tunnel Proxy Play Store listing.
+            </p>
+          </div>
+
+          <div className="reference-gallery">
+            <article className="gallery-card gallery-card-large">
+              <Image
+                src="/screenshots/shot-1.png"
+                alt={screenshots[0].alt}
+                width={260}
+                height={592}
+                className="device-image"
+              />
+            </article>
+
+            <article className="gallery-card">
+              <Image
+                src="/screenshots/shot-2.png"
+                alt={screenshots[1].alt}
+                width={260}
+                height={592}
+                className="device-image"
+              />
+            </article>
+
+            <article className="gallery-card">
+              <Image
+                src="/screenshots/shot-3.png"
+                alt={screenshots[2].alt}
+                width={260}
+                height={592}
+                className="device-image"
+              />
+            </article>
+
+            <article className="gallery-card">
+              <Image
+                src="/screenshots/shot-4.png"
+                alt={screenshots[3].alt}
+                width={260}
+                height={592}
+                className="device-image"
+              />
+            </article>
+
+            <article className="gallery-card">
+              <Image
+                src="/screenshots/shot-5.png"
+                alt={screenshots[4].alt}
+                width={260}
+                height={592}
+                className="device-image"
+              />
+            </article>
+
+            <article className="gallery-card gallery-card-info">
+              <Image
+                src="/brand/icon.png"
+                alt={`${APP_NAME} logo`}
+                width={480}
+                height={480}
+                className="gallery-brand-image"
+              />
+              <h3>Responsive store-inspired landing page</h3>
+              <p>
+                Same app assets, stronger structure, and a layout that holds together on
+                desktop and mobile.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="shell metric-strip">
+          {metrics.map((metric) => (
+            <article key={metric.label} className="metric-card-ref">
+              <h3>{metric.value}</h3>
+              <p>{metric.label}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="section">
         <div className="shell">
-          <div className="section-heading">
-            <span className="eyebrow">Listing-inspired experience</span>
-            <h2>Built from the actual visuals and messaging already visible in the app store.</h2>
-            <p>
-              The homepage keeps the app&apos;s strongest cues front and center: the crest
-              logo, clean white canvas, vivid blue action blocks, rounded control cards,
-              and the same screenshots users already recognize from the listing.
-            </p>
+          <div className="section-heading centered-heading">
+            <span className="eyebrow">Why this direction works</span>
+            <h2>Closer to the reference feel, without dropping My Tunnel Proxy&apos;s own identity.</h2>
           </div>
 
-          <div className="feature-grid">
-            {featureCards.map((feature) => (
-              <article key={feature.title} className="feature-card">
-                <span className="feature-index">{feature.eyebrow}</span>
-                <h3>{feature.title}</h3>
-                <p>{feature.body}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-contrast">
-        <div className="shell">
-          <div className="section-heading">
-            <span className="eyebrow">App Screens</span>
-            <h2>The same Play Store screenshots, presented as a polished product story.</h2>
-            <p>
-              Server picker flows, package lists, connected states, and the large stop
-              button are all carried over from the live listing so the web experience
-              remains visually faithful to the Android app.
-            </p>
-          </div>
-
-          <div className="showcase-grid">
-            {screenshots.map((shot, index) => (
-              <article
-                key={shot.src}
-                className={`showcase-card showcase-card-${index + 1}`}
-              >
-                <div className="showcase-label">
-                  <span>{shot.title}</span>
-                </div>
-                <Image
-                  src={shot.src}
-                  alt={shot.alt}
-                  width={260}
-                  height={592}
-                  className="showcase-image"
-                />
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="shell split-section">
-          <div className="split-copy">
-            <span className="eyebrow">Why it works</span>
-            <h2>A simple product pitch anchored in privacy and fast actions.</h2>
-            <p>
-              The Google Play description emphasizes encrypted traffic, quick protocol
-              selection, global reach, and one-click connection. This web version turns
-              those same points into a clearer landing flow for new visitors.
-            </p>
-          </div>
-
-          <div className="signal-grid">
-            <article className="signal-panel">
-              <h3>Recognizable branding</h3>
-              <p>
-                Laurel arcs, the central shield mark, and the blue world-map backdrop
-                make the brand feel consistent across app and web.
-              </p>
-            </article>
-
-            <article className="signal-panel">
-              <h3>Clear product framing</h3>
-              <p>
-                The web copy is based on the live listing: fast and secure VPN, one-tap
-                use, and supported connection modes.
-              </p>
-            </article>
-
-            <article className="signal-panel">
-              <h3>Privacy-forward messaging</h3>
-              <p>
-                The site highlights the current store disclosure and links directly to a
-                dedicated privacy policy for easier trust-building.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-faq">
-        <div className="shell">
-          <div className="section-heading">
-            <span className="eyebrow">FAQ</span>
-            <h2>Quick answers for visitors arriving from search or social links.</h2>
-          </div>
-
-          <div className="faq-grid">
-            {faqs.map((faq) => (
-              <article key={faq.question} className="faq-card">
-                <h3>{faq.question}</h3>
-                <p>{faq.answer}</p>
+          <div className="voice-grid">
+            {trustCards.map((card) => (
+              <article key={card.title} className="voice-card">
+                <h3>{card.title}</h3>
+                <p>{card.body}</p>
               </article>
             ))}
           </div>
@@ -306,14 +450,24 @@ export default function HomePage() {
       </section>
 
       <section className="section">
-        <div className="shell cta-panel">
-          <div>
-            <span className="eyebrow">Get started</span>
-            <h2>Take visitors straight from the site to the official Android listing.</h2>
-            <p>
-              If you are looking for the live app, head to Google Play. If you need the
-              legal details first, the privacy policy is available as a dedicated page.
-            </p>
+        <div className="shell download-band">
+          <div className="download-brand">
+            <Image
+              src="/brand/icon.png"
+              alt={`${APP_NAME} logo`}
+              width={480}
+              height={480}
+              className="download-brand-image"
+            />
+            <div>
+              <span className="eyebrow">Download {APP_NAME}</span>
+              <h2>Get the Android app and keep the same UI story from web to mobile.</h2>
+              <p>
+                The homepage now follows a structure much closer to the HTTP Injector
+                reference while staying faithful to the real My Tunnel Proxy listing and
+                its public app visuals.
+              </p>
+            </div>
           </div>
 
           <div className="cta-actions">
